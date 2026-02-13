@@ -1,0 +1,174 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #ffe6f0, #ff99c8);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.heart {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    background-color: #ff3366;
+    transform: rotate(-45deg);
+    margin: 0 auto 25px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 0, 80, 0.7);
+    transition: all 0.3s ease;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background-color: #ff3366;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.heart::before {
+    top: -70px;
+    left: 0;
+}
+
+.heart::after {
+    left: 70px;
+    top: 0;
+}
+
+.sparkle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, #fff 0%, #ffd700 40%, #ff69b4 70%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 0 8px #fff,
+    0 0 16px #ffd700,
+    0 0 24px #ff69b4;
+    filter: blur(0.5px);
+}
+
+.sparkle:nth-child(1) {
+    top: -20px;
+    left: 20px;
+}
+
+.sparkle:nth-child(2) {
+    top: 10px;
+    left: -20px;
+}
+
+.sparkle:nth-child(3) {
+    top: 60px;
+    left: 80px;
+}
+
+.sparkle:nth-child(4) {
+    top: 100px;
+    right: 20px;
+}
+
+.sparkle:nth-child(5) {
+    bottom: 20px;
+    left: 50px;
+}
+
+.sparkle:nth-child(6) {
+    top: 0;
+    right: -20px;
+    animation-delay: 1s;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 26px;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+p {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+#particles, #floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+#floating-hearts {
+    z-index: 1;
+}
+
+#particles {
+    z-index: 99;
+}
+
+.particle-heart {
+    position: absolute;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 8s infinite linear;
+}
+
+.love-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ff1493;
+    text-shadow: 0 0 40px #ff69b4;
+    opacity: 0;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.gif-wrapper {
+    margin-top: 20px;
+    width: 320px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.gif-wrapper.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
