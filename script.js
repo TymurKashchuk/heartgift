@@ -46,7 +46,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     heart.classList.add('heartbeat');
 
+    let isAnimating = false;
+
     heart.addEventListener('mouseenter', function() {
+        if (isAnimating) return;
+        activateHeart();
+    });
+
+    heart.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (isAnimating) return;
+        activateHeart();
+    }, { passive: false });
+
+    function activateHeart() {
+        isAnimating = true;
+
         heart.style.transition = 'all 0.6s ease';
         heart.style.backgroundColor = '#ff69b4';
         heart.classList.add('pink');
@@ -55,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         heart.classList.add('fast-heartbeat');
         heart.style.transform = 'rotate(-45deg) scale(1.1)';
 
-        // Повільні іскорки
         sparkles.forEach((sparkle, index) => {
             setTimeout(() => {
                 sparkle.style.opacity = '1';
@@ -63,13 +77,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }, index * 200);
         });
 
-        // Текст
         title.style.transition = 'all 1s ease';
         title.style.opacity = '1';
         title.style.transform = 'translateY(0)';
-    });
+    }
 
     heart.addEventListener('mouseleave', function() {
+        if (isAnimating) return;
+        resetHeart();
+    });
+
+    function resetHeart() {
         heart.style.transition = 'all 0.8s ease';
         heart.style.backgroundColor = '#ff3366';
         heart.classList.remove('pink');
@@ -77,28 +95,14 @@ document.addEventListener('DOMContentLoaded', function() {
         heart.classList.remove('fast-heartbeat');
         heart.classList.add('heartbeat');
         heart.style.transform = 'rotate(-45deg)';
+
         sparkles.forEach(sparkle => {
             sparkle.style.opacity = '0';
             sparkle.classList.remove('sparkle-anim');
         });
+
         title.style.transition = 'all 1s ease';
         title.style.opacity = '0';
         title.style.transform = 'translateY(20px)';
-    });
-
-    // Мобільна підтримка
-    heart.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        heart.style.transition = 'all 0.6s ease';
-        heart.style.backgroundColor = '#ff69b4';
-        heart.classList.add('pink');
-    }, { passive: false });
-
-    heart.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        heart.style.transition = 'all 0.8s ease';
-        heart.style.backgroundColor = '#ff3366';
-        heart.classList.remove('pink');
-    }, { passive: false });
-
+    }
 });
