@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const title = document.querySelector('h1');
     const particlesContainer = document.getElementById('particles');
     const floatingContainer = document.getElementById('floating-hearts');
+    const LOVE_EMOJIS = ['💕','💞','💓','💗','💖','💝','💘','❣️','❤️','🩷','💟'];
 
     const style = document.createElement('style');
     style.textContent = `
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(() => {
         const fHeart = document.createElement('div');
         fHeart.className = 'floating-heart';
-        fHeart.innerHTML = ['💕','❤️','💖','🩷','💗','💝','💟'][Math.floor(Math.random()*7)];
+        fHeart.innerHTML = LOVE_EMOJIS[Math.floor(Math.random() * LOVE_EMOJIS.length)];
         fHeart.style.left = Math.random() * 100 + 'vw';
         fHeart.style.animationDuration = (7 + Math.random() * 5) + 's';
         floatingContainer.appendChild(fHeart);
@@ -142,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < 70; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle-heart';
-            particle.innerHTML = ['❤️','💖','💕','🩷','💗','💝','💟','💓'][Math.floor(Math.random()*8)];
+            particle.innerHTML = LOVE_EMOJIS[Math.floor(Math.random() * LOVE_EMOJIS.length)];
             particle.style.left = x + 'px';
             particle.style.top = y + 'px';
 
